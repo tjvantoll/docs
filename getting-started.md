@@ -118,9 +118,11 @@ Create a `view-models` folder and create a new `count-model.js` file within it. 
         └── ...
 ```
 
-Paste the following code in your new `count-model.js` file:
+> **Note**: TypeScript is a first-class citizen in NativeScript. If you'd like to use TypeScript, create .ts files instead of .js files (so `main-page.ts` and `count-model.ts`), and copy and paste code from the TypeScript tabs instead of the JavaScript tabs below. That's it!
 
-``` JavaScript
+With that structure in place, next open your `count-model.js` file and paste in the following code:
+
+```JavaScript
 var observable = require("data/observable");
 
 var counter = 42;
@@ -137,6 +139,30 @@ countModel.tapAction = function () {
 };
 module.exports = countModel;
 ```
+```TypeScript
+import observable = require("data/observable");
+
+export class CountModel extends observable.Observable {
+    private counter: number;
+    constructor() {
+        super();
+
+        this.counter = 42;
+        this.set("message", this.counter + " taps left");
+    }
+
+    public tapAction() {
+        this.counter--;
+        if (this.counter <= 0) {
+            this.set("message", "Hoorraaay! You unlocked the NativeScript clicker achievement!");
+        }
+        else {
+            this.set("message", this.counter + " taps left")
+        }
+    }
+}
+export new CountModel();
+```
 
 This view-model exposes two things: a `message` property (created by the call to `.set()`), and a `tapAction` function. The `tapAction` function decrements a counter and updates the `message` property to reflect the change.
 
@@ -151,6 +177,18 @@ function pageLoaded(args) {
     page.bindingContext = countModel;
 }
 exports.pageLoaded = pageLoaded;
+```
+```TypeScript
+import observable = require("data/observable");
+import pages = require("ui/page");
+import countModel = require("./view-models/count-model");
+
+// Event handler for Page "loaded" event attached in main-page.xml
+export function pageLoaded(args: observable.EventData) {
+    // Get the event sender
+    var page = <pages.Page>args.object;
+    page.bindingContext = countModel;
+}
 ```
 
 The `require()` call imports your count model, and the `pageLoaded` function sets it as the page's “bindingContext”, with the “bindingContext” just meaning that your model's properties and functions will now be available in your page's XML using NativeScript's data-binding syntax.
