@@ -14,7 +14,7 @@ Currently NativeScript runs on the following platforms:
 
 ## Step 1: Install NativeScript
 
-You build NativeScript apps with [NativeScript CLI](https://github.com/NativeScript/nativescript-cli), which you need to install from npm:
+You build NativeScript apps with the [NativeScript CLI](https://github.com/NativeScript/nativescript-cli) written to run on the Node.js platform. You can install it from npm (Node.js package manager):
 
 ```
 $ npm install -g nativescript
@@ -22,7 +22,7 @@ $ npm install -g nativescript
 
 ## Step 2: Create a project
 
-The NativeScript install creates two commands, `nativescript` and `tns`, that you use to create, build, and run your NativeScript projects. Running `tns create` (or `nativescript create`) creates a new project:
+The NativeScript install creates two commands, `nativescript` and `tns`, that you use to create, build, and run your NativeScript projects. Running `tns create` (or `nativescript create`) creates a new project. From the terminal choose a directory to create a project and run:
 
 ```
 $ tns create hello-world
@@ -42,7 +42,7 @@ $ tns platform add android
 
 ## Step 4: Run your app
 
-After you've added platform(s) you can use the `tns run` command to run your app. For example, the following runs your app in the iOS emulator:
+After you've added platform(s) you can use the `tns run` command to run your app. For example, the following runs your app in the iOS emulator after first installing the ios-sim-portable pacakge:
 
 ```
 $ npm install -g ios-sim-portable  # Needed to launch the iOS emulator from the CLI
@@ -54,6 +54,7 @@ The following runs your app in the Android emulator (specifically an [Android AV
 ```
 $ tns run android --emulator
 ```
+## Step 5: Deplay your app
 
 To deploy your app to physical USB-connected devices, omit the `--emulator` flag. The following deploys your app to a USB-connected Android device:
 
@@ -69,7 +70,7 @@ $ tns run ios
 
 > **Warning**: Deploying your app to iOS devices requires that a valid iOS certificate and provisioning profile pair are configured on your development machine. For more information see [iOS Code Signing - A Complete Walkthrough](http://seventhsoulmountain.blogspot.com/2013/09/ios-code-sign-in-complete-walkthrough.html).
 
-## Step 5: Build something awesome
+## Step 6: Build something awesome
 
 The project you just created has a single empty page, and that's no fun. Let's look at what NativeScript makes possible.
 
