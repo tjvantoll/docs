@@ -84,6 +84,8 @@ Next, add the Android platform with the same `platform add` command:
 tns platform add android
 ```
 
+With that out of the way, it’s time to start building your app.
+
 <div class="exercise-end"></div>
 
 >**IMPORTANT:** You can add platforms only for SDKs that you already have installed on your development machine. If you get errors running `tns platform add`, refer back to the section on [setting up your development environment](#install-nativescript-and-configure-your-environment).
